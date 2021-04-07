@@ -5,13 +5,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Config\" />
+    <Folder Include="Data\Migrations\" />
     <Folder Include="Specifications\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.11" />
   </ItemGroup>
 
   <PropertyGroup>
