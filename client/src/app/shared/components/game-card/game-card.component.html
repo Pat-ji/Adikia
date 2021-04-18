@@ -1,0 +1,12 @@
+<div class="card">
+    <div class="image position-relative">
+        <img src="{{game.resourceUrl}}" alt="{{game.name}}" class="img-fluid bg-info">
+    </div>
+
+    <div class="card-body d-flex justify-content-center nav nav-pills row">
+        <a routerLink="/game/details/{{game.id}}" class="nav-item">
+            <p class="card-title nav-link m-1">{{game.name}}</p>
+        </a>
+        <ng-content></ng-content>
+    </div>
+</div>

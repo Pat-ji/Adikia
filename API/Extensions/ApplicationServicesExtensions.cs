@@ -1,7 +1,8 @@
 ﻿using System.Linq;
-using System.Net;
-using API.Data;
-using Core.Interfaces;
+using API.Errors;
+using API.Interfaces.Services;
+using API.Services;
+using Core.Interfaces.Repositories;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +15,13 @@ namespace API.Extensions
 		{
 			services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 
+			services.AddScoped<ITokenService, TokenService>();
+			services.AddScoped<IUserService, UserService>();
+			services.AddScoped<IGameService, GameService>();
+			services.AddScoped<IUserGameService, UserGameService>();
+			services.AddScoped<ISessionService, SessionService>();
+			services.AddScoped<ISessionCharacterService, SessionCharacterService>();
+
 			services.Configure<ApiBehaviorOptions>(options =>
 			{
 				options.InvalidModelStateResponseFactory = actionContext =>
@@ -24,7 +32,7 @@ namespace API.Extensions
 							.Select(y => y.ErrorMessage)
 						.ToArray();
 
-					var response = new ApiResponse<string[]>((int)HttpStatusCode.BadRequest, errors);
+					var response = new ApiValidationErrorResponse(errors);
 
 					return new BadRequestObjectResult(response);
 				};

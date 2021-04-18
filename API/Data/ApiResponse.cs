@@ -1,19 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-
-namespace API.Data
+﻿namespace API.Data
 {
-    public class ApiResponse<T>
+    public class ApiResponse<T> where T : class
     {
         public int StatusCode { get; set; }
-        public T Data { get; set; }
         public string Message { get; set; }
+        public T Data { get; set; }
 
-        public ApiResponse(int statusCode, T data, string message = null)
+        public ApiResponse(int statusCode, T data = null, string message = null)
         {
             StatusCode = statusCode;
             Data = data;

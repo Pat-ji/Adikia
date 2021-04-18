@@ -10,7 +10,7 @@ namespace API.Extensions
         {
             services.AddSwaggerGen(x =>
             {
-                x.SwaggerDoc("v1", new OpenApiInfo { Title = "Skinet API", Version = "v1" });
+                x.SwaggerDoc("v1", new OpenApiInfo { Title = "Adikia API", Version = "v1" });
             });
 
             return services;
@@ -22,7 +22,7 @@ namespace API.Extensions
 
             app.UseSwaggerUI(x =>
             {
-                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Skinet API v1");
+                x.SwaggerEndpoint("/swagger/v1/swagger.json", "Adikia API v1");
             });
 
             return app;

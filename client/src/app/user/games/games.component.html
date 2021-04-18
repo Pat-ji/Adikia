@@ -1,0 +1,39 @@
+<h1>Games</h1>
+<hr class="w-100 bg-default" />
+
+<div class="container">
+    <div class="row mt-4" *ngIf="games">
+        <div class="col-4 mb-4" *ngFor="let game of games">
+            <app-game-card [game]="game">
+                <a (click)="onNewSessionClick(game.id)" class="pointer nav-item">
+                    <p class="card-title nav-link m-1">New session</p>
+                </a>
+            </app-game-card>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+        <app-paging-footer [totalCount]="totalGameCount" [pageSize]="gamePagination.pageSize"
+            (pageChanged)="onGamePageChanged($event)"></app-paging-footer>
+    </div>
+</div>
+
+<h1 class="mt-4">Sessions</h1>
+<hr class="w-100 bg-default" />
+
+<div class="container">
+    <div class="row mt-4" *ngIf="sessions">
+        <div class="col-4 mb-4" *ngFor="let session of sessions">
+            <app-game-card [game]="session.game">
+                <a (click)="onContinueSession(session.id)"class="pointer nav-item">
+                    <p class="card-title nav-link m-1">Continue</p>
+                </a>
+            </app-game-card>
+        </div>
+    </div>
+
+    <div class="row justify-content-center mt-2">
+        <app-paging-footer [totalCount]="totalSessionCount" [pageSize]="sessionPagination.pageSize"
+            (pageChanged)="onSessionPageChanged($event)"></app-paging-footer>
+    </div>
+</div>

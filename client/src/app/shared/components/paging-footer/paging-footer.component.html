@@ -1,0 +1,10 @@
+<div class="text-center">
+  <div *ngIf="totalCount === 0" class="mb-3">
+    <span>No items to display</span>
+  </div>
+
+  <pagination class="pagination-danger ng-untouched ng-pristine ng-valid" [boundaryLinks]="true"
+    [totalItems]="totalCount" [itemsPerPage]="pageSize" (pageChanged)="onPageChanged($event)" previousText="&lsaquo;"
+    nextText="&rsaquo;" firstText="&laquo;" lastText="&raquo;">
+  </pagination>
+</div>

@@ -1,0 +1,11 @@
+<ng-container *ngIf="(currentUser$ | async) as user">
+    <div class="row">
+        <span class="col-6 font-weight-bold text-right title m-0">Display name</span>
+        <span class="col-6 title m-0">{{user.displayName}}</span>
+    </div>
+
+    <div class="row">
+        <span class="col-6 font-weight-bold text-right title m-0">Email</span>
+        <span class="col-6 title m-0">{{user.email}}</span>
+    </div>
+</ng-container>

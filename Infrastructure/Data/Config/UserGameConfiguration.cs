@@ -8,10 +8,10 @@ namespace Infrastructure.Data.Config
     {
         public void Configure(EntityTypeBuilder<UserGame> builder)
         {
-            builder.HasKey(x => new { x.UserId, x.GameId });
+            builder.HasKey(x => x.Id);
 
-            builder.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId);
-            builder.HasOne(x => x.Game).WithMany().HasForeignKey(x => x.GameId);
+            builder.HasOne(x => x.User).WithMany().HasForeignKey(x => x.AppUserId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(x => x.Game).WithMany().HasForeignKey(x => x.GameId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

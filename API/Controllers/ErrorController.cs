@@ -8,6 +8,6 @@ namespace API.Controllers
     public class ErrorController : BaseController
     {
         public IActionResult Error(int code, string message = null)
-            => new ObjectResult(new ApiResponse<string>(code, null, message));
+            => new ObjectResult(new ApiResponse<string>(code, message));
     }
 }

@@ -1,7 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Core.Entities.Identity;
 using Infrastructure.Data;
+using Infrastructure.Identity;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,10 +27,13 @@ namespace API
                 try
                 {
                     var context = services.GetRequiredService<StoreContext>();
-
                     await context.Database.MigrateAsync();
+                    await Seed.SeedAsync(context);
 
-                    logger.LogInformation("Database is up-to-date");
+                    var identityContext = services.GetRequiredService<IdentityContext>();
+                    await identityContext.Database.MigrateAsync();
+
+                    logger.LogInformation("Databases are up-to-date");
                 }
                 catch (Exception ex)
                 {
