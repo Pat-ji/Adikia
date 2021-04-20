@@ -1,7 +1,6 @@
 ﻿using API.Data;
 using API.Dtos.Entities;
 using API.Helpers;
-using API.Interfaces.Services;
 using AutoMapper;
 using Core.Entities;
 using Core.Entities.Identity;
@@ -9,11 +8,18 @@ using Core.Interfaces;
 using Core.Interfaces.Repositories;
 using Core.Specifications;
 using Infrastructure.Data;
+using System;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace API.Services
 {
+    public interface ISessionService
+    {
+        public Task<ApiResponse<SessionDto>> CreateSession(AppUser user, int gameId);
+        public Task<ApiResponse<IPagination<SessionDto>>> GetSessions(AppUser user, PaginationParams pagination);
+    }
+
     public class SessionService : ISessionService
     {
         private readonly IUserGameService _userGameService;
@@ -39,7 +45,8 @@ namespace API.Services
             var session = new Session
             {
                 AppUserId = user.Id,
-                GameId = gameId
+                GameId = gameId,
+                StartDate = DateTime.Now
             };
 
             var result = await _sessionRepository.AddAsync(session, true);

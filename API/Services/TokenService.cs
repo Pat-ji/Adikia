@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using API.Interfaces.Services;
 using Core.Entities.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 
 namespace API.Services
 {
+    public interface ITokenService
+    {
+        string CreateToken(AppUser user);
+    }
+
     public class TokenService : ITokenService
     {
         private readonly IConfiguration _config;

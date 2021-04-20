@@ -1,7 +1,7 @@
 ﻿using API.Dtos.Entities;
 using API.Errors;
 using API.Helpers;
-using API.Interfaces.Services;
+using API.Services;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

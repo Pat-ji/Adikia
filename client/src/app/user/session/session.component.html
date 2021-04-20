@@ -1,1 +1,23 @@
-<p>session works!</p>
+<ng-container>
+  <header class="navbar navbar-expand bg-default">
+    <nav class="navbar-nav ml-auto">
+      <a (click)="setTab(1)" class="nav-item navbar-brand tab-item" [ngClass]="{'active': tab === 1}">
+        <i class="fa fa-user-secret"></i>
+        Investigation
+      </a>
+      <a (click)="setTab(2)" class="nav-item navbar-brand tab-item" [ngClass]="{'active': tab === 2}">
+        <i class="fa fa-list-ul"></i>
+        Evidence
+      </a>
+      <a (click)="setTab(3)" class="nav-item navbar-brand tab-item" [ngClass]="{'active': tab === 3}">
+        <i class="fa fa-question-circle"></i>
+        Hints
+      </a>
+    </nav>
+  </header>
+  <div class="tab-content">
+    <app-session-investigation *ngIf="tab === 1"></app-session-investigation>
+    <app-session-evidence *ngIf="tab === 2"></app-session-evidence>
+    <app-session-hints *ngIf="tab === 3"></app-session-hints>
+  </div>
+</ng-container>

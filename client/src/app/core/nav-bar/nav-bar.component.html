@@ -1,36 +1,38 @@
-<header
-  class="d-flex flex-column flex-md-row align-items-center justify-content-between fixed-top navbar navbar-expand-lg fixed-top navbar-transparent">
-  <img src="/assets/images/logo.png" style="max-height: 70px" alt="logo" class="logo" routerLink="/" />
-  
-  <nav>
-    <a class="navbar-brand p-2" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
-    <a class="navbar-brand p-2" routerLink="/game/overview" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Games</a>
+<header class="navbar navbar-expand bg-transparent floating-top">
+  <div class="w-25"><img src="/assets/images/logo.png" style="max-height: 70px" alt="logo" /></div>
+
+  <nav class="navbar-nav mr-auto ml-auto">
+    <a class="nav-item navbar-brand p-2" routerLink="/" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a class="nav-item navbar-brand p-2" routerLink="/game/overview" routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }">Games</a>
   </nav>
 
-  <ng-container *ngIf="(currentUser$ | async) as user; else loggedOut">
-    <div class="dropdown navbar-brand mr-5" dropdown>
-      <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
-        <strong>{{ user.displayName }}</strong>
-      </a>
-      <div class="dropdown-menu dropdown-menu-right" style="cursor:pointer" *dropdownMenu>
-        <a routerLink="/user/games" class="dropdown-item d-flex align-items-center py-2">
-          <i class="fa fa-gamepad mr-3"></i>My games
+  <div class="w-25 text-right">
+    <ng-container *ngIf="(currentUser$ | async) as user; else loggedOut">
+      <div class="dropdown navbar-brand mr-5" dropdown>
+        <a class="dropdown-toggle" style="cursor: pointer;" dropdownToggle>
+          <strong>{{ user.displayName }}</strong>
         </a>
-        <a routerLink="/user/details" class="dropdown-item d-flex align-items-center py-2">
-          <i class="fa fa-address-book mr-3"></i>Account details
-        </a>
-        <div class="dropdown-divider"></div>
-        <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
-          <i class="fa fa-sign-out mr-3"></i>Logout
-        </a>
+        <div class="dropdown-menu dropdown-menu-right" style="cursor:pointer" *dropdownMenu>
+          <a routerLink="/user/games" class="dropdown-item d-flex align-items-center py-2">
+            <i class="fa fa-gamepad mr-3"></i>My games
+          </a>
+          <a routerLink="/user/details" class="dropdown-item d-flex align-items-center py-2">
+            <i class="fa fa-address-book mr-3"></i>Account details
+          </a>
+          <div class="dropdown-divider"></div>
+          <a (click)="logout()" class="dropdown-item d-flex align-items-center py-2">
+            <i class="fa fa-sign-out mr-3"></i>Logout
+          </a>
+        </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
 
-  <ng-template #loggedOut>
-    <div class="d-flex align-items center">
+    <ng-template #loggedOut>
       <a class="btn btn-simple btn-info mr-2" routerLink="/login">Login</a>
       <a class="btn btn-simple btn-info mr-3" routerLink="/sign-up">Sign up</a>
-    </div>
-  </ng-template>
+    </ng-template>
+
+  </div>
 </header>

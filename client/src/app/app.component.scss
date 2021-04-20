@@ -1,0 +1,14 @@
+:host {
+    .content {
+        padding-top: 2em;
+        margin-left: 15%;
+        margin-right: 15%;
+        overflow: auto;
+        height: calc(100vh - 100px);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}

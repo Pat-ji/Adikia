@@ -87,8 +87,4 @@ export class UserGamesComponent implements OnInit {
       });
   }
 
-  onContinueSession(sessionId: number) {
-    
-  }
-
 }

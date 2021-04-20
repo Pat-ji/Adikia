@@ -8,4 +8,5 @@ import { IGame } from '../../models/game';
 })
 export class GameCardComponent {
   @Input() game: IGame;
+  @Input() showDetails: boolean = true;
 }

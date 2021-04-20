@@ -4,8 +4,8 @@
     </div>
 
     <div class="card-body d-flex justify-content-center nav nav-pills row">
-        <a routerLink="/game/details/{{game.id}}" class="nav-item">
-            <p class="card-title nav-link m-1">{{game.name}}</p>
+        <a *ngIf="showDetails" routerLink="/game/details/{{game.id}}" class="nav-item">
+            <p class="card-title nav-link btn m-1">{{game.name}}</p>
         </a>
         <ng-content></ng-content>
     </div>

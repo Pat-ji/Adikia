@@ -1,7 +1,6 @@
 ﻿using API.Data;
 using API.Dtos.Entities;
 using API.Helpers;
-using API.Interfaces.Services;
 using AutoMapper;
 using Core.Entities;
 using Core.Entities.Identity;
@@ -14,6 +13,12 @@ using System.Threading.Tasks;
 
 namespace API.Services
 {
+    public interface IUserGameService
+    {
+        Task<bool> UserHasGame(AppUser user, int gameId);
+        Task<ApiResponse<IPagination<GameDto>>> GetUserGames(AppUser user, PaginationParams pagination);
+    }
+
     public class UserGameService : IUserGameService
     {
         private readonly IBaseRepository<UserGame> _userGameRepository;

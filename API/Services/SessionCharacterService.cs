@@ -1,5 +1,4 @@
-﻿using API.Interfaces.Services;
-using Core.Entities;
+﻿using Core.Entities;
 using Core.Interfaces.Repositories;
 using Core.Specifications;
 using System.Collections.Generic;
@@ -8,6 +7,11 @@ using System.Threading.Tasks;
 
 namespace API.Services
 {
+    public interface ISessionCharacterService
+    {
+        Task<IEnumerable<SessionCharacter>> CreateSessionCharacters(Session session);
+    }
+
     public class SessionCharacterService : ISessionCharacterService
     {
         private readonly IBaseRepository<Game> _gameRepository;
@@ -28,7 +32,7 @@ namespace API.Services
             {
                 SessionId = session.Id,
                 CharacterId = x.Id,
-                CharacterStage = 0
+                CharacterStage = 0,
             });
 
             return await _sessionCharacterRepository.AddRangeAsync(sessionCharacters, true);

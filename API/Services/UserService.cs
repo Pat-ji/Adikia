@@ -1,5 +1,4 @@
 ﻿using API.Extensions;
-using API.Interfaces.Services;
 using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using System.Security.Claims;
@@ -7,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace API.Services
 {
+    public interface IUserService
+    {
+        Task<AppUser> FindByEmailFromClaimsPrinciple(ClaimsPrincipal claimPrincipal);
+    }
+
     public class UserService : IUserService
     {
         private readonly UserManager<AppUser> _userManager;
